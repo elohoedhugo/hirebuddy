@@ -1,10 +1,12 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import axios from 'axios'
 
+const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000'
+
 export const fetchJobs = createAsyncThunk(
   'jobs/fetchJobs',
   async (searchTerm = '') => {
-    const response = await axios.get(`http://localhost:5000/api/jobs?search=${encodeURIComponent(searchTerm)}`)
+    const response = await axios.get(`${backendUrl}/api/jobs?search=${encodeURIComponent(searchTerm)}`)
     return response.data.data
   }
 )

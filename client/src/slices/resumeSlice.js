@@ -1,12 +1,14 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from 'axios'
 
+const backendUrl = import.meta.env.VITE_BACKEND_URL || 'http://localhost:5000'
+
 export const parseResume = createAsyncThunk(
   'resume/parseResume',
   async(file) => {
     const formData = new FormData()
     formData.append('resume', file)
-    const response = await axios.post('http://localhost:5000/api/parse-resume', formData, {
+    const response = await axios.post(`${backendUrl}/api/parse-resume`, formData, {
       headers: { 'Content-Type':'multipart/form-data' }
     })
 
