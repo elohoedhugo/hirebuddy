@@ -1,3 +1,4 @@
+require('dotenv').config();
 
 const express = require('express')
 const multer = require('multer')
@@ -183,9 +184,15 @@ app.use((err, req, res, next) => {
 })
 
 const PORT = process.env.PORT
-app.listen(PORT, () => {
+if (process.env.VERCEL !== '1') {
+  const PORT = process.env.PORT || 3001;
+  app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
   console.log(`API endpoints`)
   console.log(`- GET http://localhost:${PORT}/api/jobs?search=term`)
   console.log(`-POST http://localhost:${PORT}/api/parse-resume`)
 })
+;
+}
+module.exports = app;
+
