@@ -139,13 +139,14 @@ app.get('/api/jobs', async (req, res) => {
   if(search){
     await prisma.searchQuery.upsert({
       where: { query: search },
-      create: { query: search },
+      create: { query: search , count: 1},
       update: { count: { increment: 1 } }
     })
   }
 
   res.json({ success: true, data: jobs })
 } catch(error){
+  console.error('Failed to fetch jobs:', error);
   res.status(500).json({ success: false, error: 'Failed to fetch jobs'})
 }
 })
@@ -183,9 +184,10 @@ app.use((err, req, res, next) => {
   next(err)
 })
 
-const PORT = process.env.PORT
-if (process.env.VERCEL !== '1') {
-  const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 3001;
+
+if (!process.env.VERCEL) {
+  
   app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
   console.log(`API endpoints`)
