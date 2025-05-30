@@ -1,0 +1,128 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.home {
+  min-width: 576px;
+  padding: 1.5rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+nav{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  gap: 20px;
+}
+
+h1{
+  font-size: 30px;
+  font-weight: 700;
+}
+
+form{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: space-around;
+  align-items: center;
+ min-width: 500px;
+}
+
+.searchbutton{
+  background-color: rgb(127, 255, 129);
+  padding-inline: 20px;
+  padding-block: 10px;
+  font-weight: 700;
+  border-radius: 10px;
+}
+
+.searchbutton:hover{
+  background-color: orange;
+}
+
+.searchinput{
+ border: 1px solid rgb(0, 255, 153);
+ margin-right: 20px;
+ height: 50px;
+ padding-inline: 20px;
+ min-width: 500px;
+}
+
+.react-icon{
+  height: 30px;
+  width: 40px;
+}
+
+.adddiv{
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.adddiv:hover{
+  color: orange;
+}
+
+
+
+.filep{
+  text-align: center;
+  font-weight: 700;
+  color:  rgb(58, 169, 60);
+  font-size: 20px;
+  margin-block: 5px;
+}
+
+.failedP{
+  text-align: center;
+  font-weight: 700;
+  color:  red;
+  font-size: 20px;
+  margin-block: 5px;
+}
+
+.skillsdiv{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.extractedP{
+  margin-top: 10px;
+}
+
+.clearbutton{
+  margin-top: 10px;
+}
+
+.job-list{
+  margin-top: 10px;
+  text-align: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  gap: 10px;
+}
+
+.job-list li {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 0.05);
+  padding: 1rem;
+  transition: box-shadow 0.3s ease;
+  height: 180px;
+}
+
+.job-list li:hover {
+  box-shadow: 0 4px 16px rgb(0 0 0 / 0.1);
+}
+
+@media (max-width: 640px) {
+  .home {
+    padding: 1rem;
+  }
+}

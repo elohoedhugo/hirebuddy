@@ -1,0 +1,29 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Job {
+  id          Int      @id @default(autoincrement())
+  title       String
+  company     String
+  location    String
+  applyLink   String
+  description String
+  source      String
+  createdAt   DateTime @default(now())
+  @@index([title])
+  @@index([company])
+  @@index([location])
+}
+
+model SearchQuery {
+  id        Int      @id @default(autoincrement())
+  query     String   @unique
+  count     Int      @default(1)
+  createdAt DateTime @default(now())
+}
