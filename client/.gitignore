@@ -25,4 +25,4 @@ dist-ssr
 
 /src/generated/prisma
 
-server/.env
+.env
