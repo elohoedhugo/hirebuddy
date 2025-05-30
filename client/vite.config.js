@@ -8,4 +8,10 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+   preview: {
+    allowedHosts: [
+      'hirebuddy-front-end.onrender.com',
+      'localhost'
+    ]
+  }
 })
