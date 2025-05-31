@@ -114,7 +114,7 @@ form{
   box-shadow: 0 2px 8px rgb(0 0 0 / 0.05);
   padding: 1rem;
   transition: box-shadow 0.3s ease;
-  height: 180px;
+  height: fit-content;
 }
 
 .job-list li:hover {

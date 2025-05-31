@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { FaPlusCircle } from "react-icons/fa";
-import { FileUp, XCircle } from "lucide-react";
+import { XCircle } from "lucide-react";
 import { fetchJobs, setSearchTerm } from "../../slices/jobsSlice";
 import { parseResume, clearResume } from "../../slices/resumeSlice";
 import { useDispatch, useSelector } from "react-redux";
@@ -18,12 +18,11 @@ export const Home = () => {
     (state) => state.resume
   );
 
-
-
-
   useEffect(() => {
     if (roles && roles.length > 0) {
-      const predictedSearchTerm = roles.map(role => role.toLowerCase()).join(' ');
+      const predictedSearchTerm = roles
+        .map((role) => role.toLowerCase())
+        .join(" ");
 
       console.log("Searching jobs with:", predictedSearchTerm);
       dispatch(setSearchTerm(predictedSearchTerm));
@@ -46,8 +45,8 @@ export const Home = () => {
   const onClearResume = () => {
     setFileName(null);
     dispatch(clearResume());
-    dispatch(setSearchTerm(''))
-    dispatch(fetchJobs('')); 
+    dispatch(setSearchTerm(""));
+    dispatch(fetchJobs(""));
   };
 
   const onSearchChange = (e) => {
@@ -62,32 +61,29 @@ export const Home = () => {
   return (
     <div className="home">
       <nav>
-              <h1>Welcome to Hirebuddy</h1>
+        <h1>Welcome to Hirebuddy</h1>
 
-      <form onSubmit={onSearchSubmit}>
-        <input className="searchinput"
-          type="text"
-          value={searchTerm}
-          onChange={onSearchChange}
-          placeholder="Search for jobs..."
-        />
-        <button className="searchbutton"
-          type="submit"
-        >
-          Search
-        </button>
-      </form>
-      <div className="adddiv" onClick={handleIconClick} title="Upload Resume">
-       <FaPlusCircle className="react-icon"/>
-      <p style={{fontWeight: '700'}}>Add resume</p> 
-      </div>
-       
+        <form onSubmit={onSearchSubmit}>
+          <input
+            className="searchinput"
+            type="text"
+            value={searchTerm}
+            onChange={onSearchChange}
+            placeholder="Search for jobs..."
+          />
+          <button className="searchbutton" type="submit">
+            Search
+          </button>
+        </form>
+        <div className="adddiv" onClick={handleIconClick} title="Upload Resume">
+          <FaPlusCircle className="react-icon" />
+          <p style={{ fontWeight: "700" }}>Add resume</p>
+        </div>
       </nav>
-
 
       <div className="fileinputdiv">
         <input
-        className="fileinput"
+          className="fileinput"
           type="file"
           accept=".pdf,.docx"
           ref={inputRef}
@@ -95,11 +91,14 @@ export const Home = () => {
           style={{ display: "none" }}
         />
 
-
         {fileName && <p className="filep">Selected: {fileName}</p>}
 
-        {resumeStatus === "loading" && <p className="filep">Parsing resume...</p>}
-        {resumeStatus === "failed" && <p className="failedP text-red-600">{resumeError}</p>}
+        {resumeStatus === "loading" && (
+          <p className="filep">Parsing resume...</p>
+        )}
+        {resumeStatus === "failed" && (
+          <p className="failedP text-red-600">{resumeError}</p>
+        )}
         {resumeStatus === "succeeded" && (
           <div className="skillsdiv bg-gray-100 p-4 rounded-md w-full">
             <h3 className="extractedP font-semibold">Extracted Skills:</h3>
@@ -124,7 +123,6 @@ export const Home = () => {
               <p>No roles found</p>
             )}
 
-            
             <button
               onClick={onClearResume}
               className="clearbutton mt-4 flex items-center text-red-600 hover:text-red-800 transition"
@@ -148,9 +146,14 @@ export const Home = () => {
                 key={job.id}
                 className="border p-4 rounded-md hover:shadow-lg transition cursor-pointer"
               >
-                <h3 className="text-lg font-semibold">{job.title}</h3>
-                <p className="text-sm text-gray-600 line-clamp-3">{job.description}</p>
-                <p className="text-sm mt-2 text-blue-600 font-medium">{job.location}</p>
+                <h3 className="text-lg font-semibold">Job title: {job.title}</h3>
+                <p>{job.company}</p>
+                <p className="text-sm text-gray-600 line-clamp-3">
+                  {job.description}
+                </p>
+                <p className="text-sm mt-2 text-blue-600 font-medium">
+                 Location: {job.location}
+                </p>
                 <a
                   href={job.applyLink || "#"}
                   target="_blank"
@@ -159,6 +162,7 @@ export const Home = () => {
                 >
                   Apply Now
                 </a>
+                <p>Source: {job.source}</p>
               </li>
             ))}
           </ul>
