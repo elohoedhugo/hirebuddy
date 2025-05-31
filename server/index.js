@@ -89,63 +89,63 @@ function predictRoles(text) {
     lowerText.includes("react") ||
     lowerText.includes("angular")
   ) {
-    roles.push("Frontend Developer");
+    roles.push("Frontend");
   }
   if (
     lowerText.includes("backend") ||
     lowerText.includes("node") ||
     lowerText.includes("api")
   ) {
-    roles.push("Backend Developer");
+    roles.push("Backend");
   }
   if (lowerText.includes("full stack") || lowerText.includes("fullstack")) {
-    roles.push("Full Stack Developer");
+    roles.push("FullStack");
   }
 
   if (
     lowerText.includes("project manager") ||
     lowerText.includes("project management")
   ) {
-    roles.push("Project Manager");
+    roles.push("Manager");
   }
   if (lowerText.includes("sales") || lowerText.includes("salesforce")) {
-    roles.push("Sales Representative");
+    roles.push("Sales");
   }
   if (lowerText.includes("marketing") || lowerText.includes("seo")) {
-    roles.push("Marketing Specialist");
+    roles.push("Marketing");
   }
   if (
     lowerText.includes("customer service") ||
     lowerText.includes("client relations")
   ) {
-    roles.push("Customer Service Representative");
+    roles.push("Representative");
   }
   if (
     lowerText.includes("data analysis") ||
     lowerText.includes("data analyst")
   ) {
-    roles.push("Data Analyst");
+    roles.push("Analyst");
   }
   if (lowerText.includes("accounting") || lowerText.includes("accountant")) {
     roles.push("Accountant");
   }
   if (lowerText.includes("graphic design") || lowerText.includes("photoshop")) {
-    roles.push("Graphic Designer");
+    roles.push("Designer");
   }
   if (lowerText.includes("writing") || lowerText.includes("content writer")) {
-    roles.push("Content Writer");
+    roles.push("Writer");
   }
   if (
     lowerText.includes("public speaking") ||
     lowerText.includes("presentation skills")
   ) {
-    roles.push("Public Speaker");
+    roles.push("Speaker");
   }
   if (lowerText.includes("teamwork") || lowerText.includes("collaboration")) {
-    roles.push("Team Member");
+    roles.push("Team");
   }
 
-  return roles.length > 0 ? roles : ["General Professional"];
+  return roles.length > 0 ? roles : ["General"];
 }
 
 app.get("/api/jobs", async (req, res) => {
